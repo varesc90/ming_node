@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^1.17.4",
     "request": "^2.86.0",
     "yargs": "^4.8.1"
   },
