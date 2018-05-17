@@ -1,10 +1,10 @@
 const request = require('request');
-const api = '';
+const api = 'xx';
 
 
 var getWeather = (lat,long,callback) => {
     request({
-        url: 'https://api.forecast.io/forecast/'+api+'/'+lat+','+long,
+        url: `https://api.darksky.net/forecast/${api}/${lat},${long}`,
         json: true
     }, (error, response, body) => {
         if (error) {
@@ -12,7 +12,11 @@ var getWeather = (lat,long,callback) => {
         } else if (response.statusCode === 400) {
             console.log('Unable to fetch weather.');
         } else if (response.statusCode === 200) {
-            console.log(body.currently.temperature);
+            callback(undefined, {
+               tempature:body.currently.temperature
+            });
+        }else{
+            console.log(response.body);
         }
     });
 }

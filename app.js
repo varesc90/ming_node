@@ -44,21 +44,24 @@ const argv = yargs
     .help()
     .alias('help', 'h')
     .argv;
+var lat = '',
+    long = '';
 
 
-// geocode.geocodeAddress(argv.address, (errorMessage, results) => {
-//     if (errorMessage) {
-//         console.log(errorMessage);
-//     } else {
-//         console.log(JSON.stringify(results,undefined,2));
-//     }
-// });
-
-var lat = 13.7563;
-var long = 100.5018;
-
-
-weather.getWeather(lat,long,(errorMessage,results) => {
-
+geocode.geocodeAddress(argv.address, (errorMessage, results) => {
+    if (errorMessage) {
+        console.log(errorMessage);
+    } else {
+        console.log(results.address);
+        weather.getWeather(results.latitude,results.longtitude,(errorMessage,results) => {
+            console.log(`The weather is ${results.tempature}`);
+        });
+    }
 });
+
+
+
+
+
+
 
