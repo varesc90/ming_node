@@ -22,3 +22,5 @@ var getWeather = (lat,long,callback) => {
 }
 
 module.exports.getWeather = getWeather;
+
+
